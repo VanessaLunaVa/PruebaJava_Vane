@@ -5,6 +5,7 @@ import java.util.List;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -36,7 +37,7 @@ public class SucursalEntity {
     @JoinColumn(name = "ID_FRANQUICIA")
 	private FranquiciaEntity franquiciaEntity;
 
-	@OneToMany(cascade = CascadeType.ALL, mappedBy = "sucursalEntity")
+	@OneToMany(cascade = CascadeType.PERSIST, mappedBy = "sucursalEntity")
 	private List<ProductoEntity> lstProductos;
 
 	public SucursalEntity(Long id) {

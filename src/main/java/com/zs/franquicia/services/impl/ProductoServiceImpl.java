@@ -1,6 +1,7 @@
 
 package com.zs.franquicia.services.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -23,13 +24,12 @@ public class ProductoServiceImpl implements ProductoService {
 	@Override
 	public ProductoEntity saveProducto(ProductoDto input) {
 		ProductoEntity entity = ProductoEntity.builder().id(input.getId()).cantidad(input.getCantidad())
-				.nombre(input.getNombre()).sucursalEntity(new SucursalEntity(input.getIdSucursal()))
-				.build();
+				.nombre(input.getNombre()).sucursalEntity(new SucursalEntity(input.getIdSucursal())).build();
 		return productoRepository.save(entity);
 	}
 
 	@Override
-	public ProductoEntity editarProducto(ProductoDto dto, Long id) {		
+	public ProductoEntity editarProducto(ProductoDto dto, Long id) {
 		Optional<ProductoEntity> findById = productoRepository.findById(id);
 		if (findById.isPresent()) {
 			findById.get().setCantidad(dto.getCantidad());
@@ -44,9 +44,15 @@ public class ProductoServiceImpl implements ProductoService {
 
 	@Override
 	public List<ProductoResponse> getList(Long idFranquicia) {
-		List<ProductoResponse> r = productoRepository.lstProductosMayorCantidad(idFranquicia);
+		List<ProductoResponse> r = new ArrayList<ProductoResponse>();
+		List<ProductoEntity> lstProductosMayorCantidad = productoRepository.lstProductosMayorCantidad(idFranquicia);
+		lstProductosMayorCantidad.forEach(p -> {
+			ProductoResponse pp = ProductoResponse.builder().cantidad(p.getCantidad()).id(p.getId())
+					.nombreProducto(p.getNombre()).idSucursal(p.getSucursalEntity().getId())
+					.nombreSucursal(p.getSucursalEntity().getNombre()).build();
+			r.add(pp);
+		});
 		return r;
 	}
 
-	
 }

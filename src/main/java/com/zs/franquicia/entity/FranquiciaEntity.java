@@ -5,6 +5,7 @@ import java.util.List;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -30,7 +31,7 @@ public class FranquiciaEntity {
 	@Column(length = 100)
 	private String nombre;	
 	
-	@OneToMany(cascade = CascadeType.ALL, mappedBy = "franquiciaEntity")
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "franquiciaEntity", fetch = FetchType.LAZY)
 	private List<SucursalEntity> lstSucursal;
 
 	public FranquiciaEntity(String nombre) {
