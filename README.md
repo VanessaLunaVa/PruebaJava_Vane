@@ -23,7 +23,7 @@ El proyecto cuenta con autenticacion, los datos iniciales son user:vane@gmail.co
 ## Documentation
 
 Cuando este corriendo el proyecto, se puede ingresar a 
-[swagger]([http://localhost:9000/swagger-ui/index.html])
+[swagger](http://localhost:9000/swagger-ui/index.html)
 
 
 ## Notes
