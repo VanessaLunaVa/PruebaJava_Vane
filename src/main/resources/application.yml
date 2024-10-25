@@ -1,0 +1,37 @@
+server:
+  port: 9000
+app:
+  config:
+    expPass: ^([A-Z])(?=.*?[a-z])(?=.*?[0-9]).{5,}$
+spring:
+  h2:
+    console:
+      enabled: true
+  application:
+    name: user
+  datasource:
+    url: 'jdbc:h2:mem:testdb'
+    driverClassName: org.h2.Driver
+    username: sa
+    password: null
+  jpa:
+    properties:
+      jakarta:
+        persistence:
+          validation:
+            mode: none
+      hibernate:
+        dialect: org.hibernate.dialect.H2Dialect
+        connection:
+          characterEncoding: UTF-8
+          CharSet: UTF-8
+          useUnicode: true
+    show-sql: true
+    defer-datasource-initialization: true
+    generate-ddl: false
+    hibernate:
+      ddl-auto: none
+  security:
+    jwt:
+      secret-key: b99918a82038a17dcf492043fdb29f888eedb9874b3f6524d947664cc968b21c
+      expiration-time: 180000
