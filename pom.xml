@@ -9,11 +9,11 @@
 		<version>3.3.3</version>
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.smartjob.user</groupId>
-	<artifactId>users</artifactId>
+	<groupId>com.zs.franquicia</groupId>
+	<artifactId>franquicia</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>user</name>
-	<description>User project for Spring Boot</description>
+	<name>Franquicia</name>
+	<description>Prueba project for Spring Boot</description>
 	<properties>
 		<java.version>17</java.version>
 	</properties>
